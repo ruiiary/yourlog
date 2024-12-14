@@ -23,6 +23,8 @@ export default function HomeScreen() {
 
     var value = await AsyncStorage.getItem(key);
     console.log(value || "No data for selected date");
+
+    
   }
 
   return (
