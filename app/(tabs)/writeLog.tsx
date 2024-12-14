@@ -4,7 +4,8 @@ import { styles } from "./Styles";
 export default function TabThreeScreen() {
   return (
     <View style={styles.container}>
-      <Text>writingPage </Text>
+      <View style={styles.margin} />
+      <Text style={styles.bigText}>yourlog</Text>
     </View>
   );
 }

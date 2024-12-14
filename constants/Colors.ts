@@ -8,10 +8,13 @@ const tintColorLight = '#3C7960';
 export const Colors = {
   light: {
     text: '#11181C',
-    background: '#fff',
+    background: '#F2F6F3',
     tint: tintColorLight,
-    icon: '#687076',
-    tabIconDefault: '#687076',
+    icon: '#ccc',
+    tabIconDefault: '#ccc',
     tabIconSelected: tintColorLight,
-  }
-};
+  },
+} as const;
+
+export type ThemeMode = keyof typeof Colors; // "light"만 포함
+
