@@ -1,9 +1,11 @@
 import { View, Text, StyleSheet } from "react-native";
-import { styles } from "./Styles";
-import { useState } from "react";
+import { styles } from "../Styles";
+import React, { useState } from "react";
 import CalendarPicker from "react-native-calendar-picker";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import WritingEntryButton from "@/components/common/WritingEntryButton";
+import { LinearGradient } from "expo-linear-gradient";
+
 
 export default function HomeScreen() {
   const [name, setName] = useState("초기");
@@ -23,25 +25,30 @@ export default function HomeScreen() {
 
     var value = await AsyncStorage.getItem(key);
     console.log(value || "No data for selected date");
-
-    
   }
 
   return (
-    <View style={styles.container}>
-      <View style={styles.margin} />
-      <Text style={styles.logo}>yourlog</Text>
-      <Text style={styles.bigText}>{name}님의 성장을 응원합니다.</Text>
-      <View style={styles.margin} />
-      <View style={styles.margin} />
-      <CalendarPicker onDateChange={onDateChange} />
-      {date && (
-        <Text style={localStyles.dateText}>Selected Date Key: {date}</Text>
-      )}
-      {date1 && (
-        <Text style={localStyles.dateText}>Formatted Date: {date1}</Text>
-      )}
-      <WritingEntryButton />
+    <View style={{ flex: 1 }}>
+      <LinearGradient
+        colors={["#FFF", "#F1F6F2"]}
+        start={{ x: 0.5, y: 0 }}
+        end={{ x: 0.5, y: 1 }}
+        style={styles.gradientContainer}
+      ></LinearGradient>
+      <View style={[styles.container, { backgroundColor: "#F2F6F3", flex: 1 }]}>
+        <View style={styles.margin} />
+        <Text style={styles.logo}>yourlog</Text>
+        <Text style={styles.bigText}>{name}님의 성장을 응원합니다.</Text>
+        <View style={styles.margin} />
+        <CalendarPicker onDateChange={onDateChange} />
+        {date && (
+          <Text style={localStyles.dateText}>Selected Date Key: {date}</Text>
+        )}
+        {date1 && (
+          <Text style={localStyles.dateText}>Formatted Date: {date1}</Text>
+        )}
+        <WritingEntryButton />
+      </View>
     </View>
   );
 }

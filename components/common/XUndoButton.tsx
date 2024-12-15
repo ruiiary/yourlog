@@ -1,13 +1,25 @@
 import React from "react";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, NavigationProp } from "@react-navigation/native";
 import { Image, TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 
-const XUndoButton = () => {
-  const navigation = useNavigation();
+interface XUndoButtonProps {
+  path?: string;
+}
+
+type RootStackParamList = {
+  [key: string]: undefined; // string 키를 가지는 모든 네비게이션 경로
+};
+
+const XUndoButton: React.FC<XUndoButtonProps> = ({ path }) => {
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   const handleClick = () => {
-    navigation.goBack();
+    if (path) {
+      navigation.navigate(path);
+    } else {
+      navigation.goBack();
+    }
   };
 
   return (
