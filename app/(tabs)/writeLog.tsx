@@ -19,19 +19,18 @@ import {
 } from "../../assets/images/emotions";
 import XUndoButton from "../../components/common/XUndoButton";
 import TextEntryButton from "@/components/writeLog/TextEntryButton";
-import { useNavigation } from "@react-navigation/native";
 import { useRouter } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
-import { useTextContext } from "../../context/TextContext";
+import { useLogContext } from "../../context/LogContext";
 
 export default function TabThreeScreen() {
   const router = useRouter();
-  const { setText } = useTextContext();
+  const { text, setText } = useLogContext();
+  const { emotion, setEmotion } = useLogContext();
+  const { image, setImage } = useLogContext();
+  const { tags, setTags } = useLogContext();
 
-  const [emotion, setEmotion] = useState("");
   const [selectedEmotion, setSelectedEmotion] = useState("");
-  const [image, setImage] = useState("");
-  const [tags, setTags] = useState([]);
 
   //const isReadyToSubmit = text && emotion && tags && tags.length > 0;
   const handleEmotionClick = (emotion: string) => {
@@ -80,7 +79,7 @@ export default function TabThreeScreen() {
 
         <Text style={styles.subTitle}>오늘의 회고</Text>
         <TextEntryButton onPress={() => router.push("/writing-page")}>
-          <Text>오늘의 성장을 기록해 주세요.</Text>
+          <Text>{text ? text : "오늘의 성장을 기록해 주세요."}</Text>
         </TextEntryButton>
         <Text style={styles.subTitle}>회고 태그</Text>
       </View>
@@ -105,7 +104,7 @@ const localStyles = StyleSheet.create({
     marginBottom: 20,
   },
   EmotionBtn: {
-    backgroundColor: "transparent", // 초기 배경색을 투명하게
+    backgroundColor: "transparent",
     borderRadius: 12,
     width: 44,
     height: 44,
@@ -113,6 +112,6 @@ const localStyles = StyleSheet.create({
     alignItems: "center",
   },
   selectedEmotionBtn: {
-    backgroundColor: "#ebebeb", // 클릭 시 배경색
+    backgroundColor: "#ebebeb",
   },
 });

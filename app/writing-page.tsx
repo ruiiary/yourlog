@@ -12,20 +12,21 @@ import {
 import { styles } from "./Styles";
 import Markdown from "react-native-markdown-display";
 import XUndoButton from "@/components/common/XUndoButton";
-import { useRouter} from "expo-router";
+import { useRouter } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
-import { useTextContext } from "@/context/TextContext";
+import { useLogContext } from "@/context/LogContext";
+import { OPENAI_API_KEY } from '@env'; 
 
-const infoMarkdown = `도약기록에 다음과 같은 것들을 적어보세요. \n
+const infoMarkdown = `회고에는 다음과 같은 것들을 적어보세요. \n
 - **성취**: '오늘의 나는 무엇을 잘했는지'  
 - **개선**: '오늘의 나는 어떤 문제를 겪었는지, 앞으로 어떻게 해결할 것인지'  
 - **학습**: '오늘의 일에서 나는 어떤 것을 배웠는지'   \n
-위 세 가지가 오늘도 한 단계 도약한 나 자신을 발견하도록 이끌어 줄 거예요 :)
+위 세 가지가 오늘도 한 발짝 더 성장할 수 있도록 이끌어 줄 거예요 :)
 `;
 
 const WritingPage: React.FC = () => {
   const router = useRouter();
-  const { text, setText } = useTextContext();
+  const { text, setText } = useLogContext();
   const textRef = useRef<TextInput>(null);
 
   const [showModal, setShowModal] = useState(false);
@@ -38,6 +39,8 @@ const WritingPage: React.FC = () => {
     }
   };
 
+  // TODO: Xbutton 누르면 변경사항이 저장되지 않는 기능 추가
+
   return (
     <View style={{ flex: 1 }}>
       <LinearGradient
@@ -49,8 +52,11 @@ const WritingPage: React.FC = () => {
       <View style={[styles.container, { backgroundColor: "#F2F6F3", flex: 1 }]}>
         <View style={localStyles.headerContainer}>
           <XUndoButton path="writeLog" />
-          <Text style={styles.bigText}>오늘의 회고</Text>
-          <TouchableOpacity style={localStyles.TouchableStyle}>
+          <Text style={styles.bigText}>회고 작성</Text>
+          <TouchableOpacity
+            style={localStyles.TouchableStyle}
+            onPress={() => router.push("/writeLog")}
+          >
             <Text style={localStyles.TouchableText}>완료</Text>
           </TouchableOpacity>
         </View>
