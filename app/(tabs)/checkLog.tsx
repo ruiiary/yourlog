@@ -1,13 +1,12 @@
 import React from "react";
-import { View, Text, Button } from "react-native";
+import { SafeAreaView, View, Text, Button } from "react-native";
 import { router } from "expo-router";
-import { styles } from "./Styles";
+import { styles } from "../Styles";
 
 export default function checkLog() {
   return (
-    <View>
+    <SafeAreaView>
       <Text>Log Check Screen</Text>
-      
-      </View>
+    </SafeAreaView>
   );
 }
