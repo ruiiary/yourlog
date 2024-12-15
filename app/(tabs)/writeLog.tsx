@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   Image,
@@ -22,6 +22,7 @@ import TextEntryButton from "@/components/writeLog/TextEntryButton";
 import { useRouter } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
 import { useLogContext } from "../../context/LogContext";
+import { createTags, createLetter } from "../../api/openai";
 
 export default function TabThreeScreen() {
   const router = useRouter();
@@ -29,6 +30,7 @@ export default function TabThreeScreen() {
   const { emotion, setEmotion } = useLogContext();
   const { image, setImage } = useLogContext();
   const { tags, setTags } = useLogContext();
+  const { handler, setHandler } = useLogContext();
 
   const [selectedEmotion, setSelectedEmotion] = useState("");
 
@@ -38,6 +40,17 @@ export default function TabThreeScreen() {
     setEmotion(emotion);
     setSelectedEmotion(emotion);
   };
+
+  const fetchTags = async (text: string) => {
+    const keywords = await createTags(text);
+    setTags(keywords || []);
+  };
+
+  useEffect(() => {
+    if (text) {
+      fetchTags(text);
+    }
+  }, [handler]);
 
   return (
     <View style={{ flex: 1 }}>
@@ -49,9 +62,7 @@ export default function TabThreeScreen() {
       ></LinearGradient>
       <View style={[styles.container, { backgroundColor: "#F2F6F3", flex: 1 }]}>
         <View style={styles.margin} />
-        <XUndoButton />
         <View style={styles.margin} />
-
         <Text style={styles.bigText}>오늘의 도약을 기록해 주세요.</Text>
         <Text style={styles.subTitle}>오늘의 감정</Text>
         <View style={localStyles.EmotionBox}>
@@ -82,6 +93,7 @@ export default function TabThreeScreen() {
           <Text>{text ? text : "오늘의 성장을 기록해 주세요."}</Text>
         </TextEntryButton>
         <Text style={styles.subTitle}>회고 태그</Text>
+        <Text>{tags.join("   ")}</Text>
       </View>
     </View>
   );

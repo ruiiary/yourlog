@@ -5,12 +5,18 @@ import CalendarPicker from "react-native-calendar-picker";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import WritingEntryButton from "@/components/common/WritingEntryButton";
 import { LinearGradient } from "expo-linear-gradient";
-
+import { OPENAI_API_KEY } from "@env";
 
 export default function HomeScreen() {
   const [name, setName] = useState("초기");
   const [date, setDate] = useState("");
   const [date1, setDate1] = useState("");
+  
+  if (!OPENAI_API_KEY) {
+    console.error("API key is undefined. Check your .env configuration.");
+  } else {
+    console.log("Loaded API Key:", OPENAI_API_KEY);
+  }
 
   async function onDateChange(d: Date) {
     console.log(d.getFullYear(), d.getMonth(), d.getDate());

@@ -8,7 +8,7 @@ const WritingEntryButton = () => {
   const navigation = useNavigation();
 
   const handleClick = () => {
-    router.push("/writing-page");
+    router.push("/writeLog");
   };
 
   return (

@@ -10,6 +10,8 @@ interface LogContextType {
   setImage: (image: string) => void;
   tags: string[];
   setTags: (tags: string[]) => void;
+  handler: boolean;
+  setHandler: (handler: boolean) => void;
 }
 
 // 초기값 정의
@@ -23,6 +25,7 @@ export const LogProvider: React.FC<{ children: React.ReactNode }> = ({
   const [emotion, setEmotion] = useState("");
   const [image, setImage] = useState("");
   const [tags, setTags] = useState<string[]>([]);
+  const [handler, setHandler] = useState(false);
 
   return (
     <LogContext.Provider
@@ -35,6 +38,8 @@ export const LogProvider: React.FC<{ children: React.ReactNode }> = ({
         setImage,
         tags,
         setTags,
+        handler,
+        setHandler
       }}
     >
       {children}

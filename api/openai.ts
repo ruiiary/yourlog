@@ -1,14 +1,13 @@
 import axios from 'axios';
-import { OPENAI_API_KEY } from '@env'; 
+import { OPENAI_API_KEY } from "@env";
 
 // OpenAI API 공통 함수
-
 export const openAiApi = async (prompt: string, userContent: string) => {
   try {
     const response = await axios.post(
       'https://api.openai.com/v1/chat/completions',
       {
-        model: 'gpt-4',
+        model: "gpt-3.5-turbo",
         messages: [
           { role: 'system', content: prompt },
           { role: 'user', content: userContent },

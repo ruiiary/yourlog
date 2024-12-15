@@ -15,7 +15,6 @@ import XUndoButton from "@/components/common/XUndoButton";
 import { useRouter } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
 import { useLogContext } from "@/context/LogContext";
-import { OPENAI_API_KEY } from '@env'; 
 
 const infoMarkdown = `회고에는 다음과 같은 것들을 적어보세요. \n
 - **성취**: '오늘의 나는 무엇을 잘했는지'  
@@ -26,7 +25,7 @@ const infoMarkdown = `회고에는 다음과 같은 것들을 적어보세요. \
 
 const WritingPage: React.FC = () => {
   const router = useRouter();
-  const { text, setText } = useLogContext();
+  const { text, setText, setHandler } = useLogContext();
   const textRef = useRef<TextInput>(null);
 
   const [showModal, setShowModal] = useState(false);
@@ -39,7 +38,10 @@ const WritingPage: React.FC = () => {
     }
   };
 
-  // TODO: Xbutton 누르면 변경사항이 저장되지 않는 기능 추가
+  const handleClick = () => {
+    setHandler(true);
+    router.push("/writeLog");
+  };
 
   return (
     <View style={{ flex: 1 }}>
@@ -55,7 +57,7 @@ const WritingPage: React.FC = () => {
           <Text style={styles.bigText}>회고 작성</Text>
           <TouchableOpacity
             style={localStyles.TouchableStyle}
-            onPress={() => router.push("/writeLog")}
+            onPress={handleClick}
           >
             <Text style={localStyles.TouchableText}>완료</Text>
           </TouchableOpacity>
