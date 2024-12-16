@@ -2,6 +2,8 @@ import React, { createContext, useState, useContext } from "react";
 
 // Context 타입 정의
 interface LogContextType {
+  date: string;
+  setDate: (date: string) => void;
   text: string;
   setText: (text: string) => void;
   emotion: string;
@@ -18,9 +20,10 @@ interface LogContextType {
 const LogContext = createContext<LogContextType | undefined>(undefined);
 
 // Provider 컴포넌트
-export const LogProvider: React.FC<{ children: React.ReactNode }> = ({
+export const LogContextProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
+  const [date, setDate] = useState("");
   const [text, setText] = useState("");
   const [emotion, setEmotion] = useState("");
   const [image, setImage] = useState("");
@@ -30,6 +33,8 @@ export const LogProvider: React.FC<{ children: React.ReactNode }> = ({
   return (
     <LogContext.Provider
       value={{
+        date,
+        setDate,
         text,
         setText,
         emotion,
@@ -39,7 +44,7 @@ export const LogProvider: React.FC<{ children: React.ReactNode }> = ({
         tags,
         setTags,
         handler,
-        setHandler
+        setHandler,
       }}
     >
       {children}
@@ -51,7 +56,7 @@ export const LogProvider: React.FC<{ children: React.ReactNode }> = ({
 export const useLogContext = (): LogContextType => {
   const context = useContext(LogContext);
   if (!context) {
-    throw new Error("useTextContext must be used within a LogProvider");
+    throw new Error("useLogContext must be used within a LogContextProvider");
   }
   return context;
 };
