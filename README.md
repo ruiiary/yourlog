@@ -9,9 +9,8 @@ _2024년 12월 14일 ~ 2024년 12월 22일 / 서버리스 React Native 프로젝
 <br>
 
 ## 기술 스택
-### 핵심 기술
-- **React Native**: 크로스 플랫폼 모바일 애플리케이션 프레임워크
-- **TypeScript**: 타입 안전성과 확장성, 유지보수성을 제공하는 코드 작성
+- **React Native**
+- **TypeScript**
 
 ### 주요 라이브러리
 - **axios**: OpenAI API와 연동하여 AI 기반 기능을 통합
