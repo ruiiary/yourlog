@@ -1,10 +1,10 @@
 # Yourlog.
-당신의 성장을 위한 회고록 애플리케이션, yourlog
+### **당신의 성장을 위한 회고록 애플리케이션, yourlog**
+<br>
+_2024년 12월 14일 ~ 2024년 12월 22일 / 서버리스 React Native 프로젝트(1인 개발)_
 
 <br>
 
-## React Native Serverless Development Project
-이 프로젝트는 **2024년 12월 14일**부터 **2024년 12월 22일**까지 진행된 서버리스 React Native 프로젝트입니다. (1인 개발 프로젝트)
 
 <br>
 
