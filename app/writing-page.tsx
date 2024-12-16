@@ -51,9 +51,10 @@ const WritingPage: React.FC = () => {
         end={{ x: 0.5, y: 1 }}
         style={styles.gradientContainer}
       ></LinearGradient>
+      <View style={styles.margin} />
       <View style={[styles.container, { backgroundColor: "#F2F6F3", flex: 1 }]}>
         <View style={localStyles.headerContainer}>
-          <XUndoButton path="writeLog" />
+          <XUndoButton />
           <Text style={styles.bigText}>회고 작성</Text>
           <TouchableOpacity
             style={localStyles.TouchableStyle}
@@ -71,6 +72,7 @@ const WritingPage: React.FC = () => {
           onChangeText={changeHandler}
           ref={textRef}
         />
+
         <View style={localStyles.info}>
           <Markdown>{infoMarkdown}</Markdown>
         </View>

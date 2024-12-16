@@ -1,14 +1,12 @@
 import React from "react";
-import { useNavigation } from "@react-navigation/native";
 import styled from "styled-components/native";
 import { useRouter } from "expo-router";
 
 const WritingEntryButton = () => {
   const router = useRouter();
-  const navigation = useNavigation();
 
   const handleClick = () => {
-    router.push("/writeLog");
+    router.push("/(tabs)/writeLog");
   };
 
   return (
@@ -25,7 +23,7 @@ export default WritingEntryButton;
 const ButtonLayout = styled.View`
   z-index: 1;
   position: absolute;
-  bottom: 80px;
+  bottom: 98px;
   right: 20px;
   width: 60px;
   height: 60px;

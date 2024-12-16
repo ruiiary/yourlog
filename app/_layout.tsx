@@ -4,7 +4,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
 import "react-native-reanimated";
-import { LogProvider } from "@/context/LogContext";
+import { LogContextProvider } from "@/context/LogContext";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -25,13 +25,13 @@ export default function RootLayout() {
   }
 
   return (
-    <LogProvider>
+    <LogContextProvider>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="writing-page" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />
-    </LogProvider>
+    </LogContextProvider>
   );
 }
