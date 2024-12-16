@@ -1,3 +1,30 @@
+# Yourlog.
+당신의 성장을 위한 회고록 애플리케이션, yourlog
+
+<br>
+
+## React Native Serverless Development Project
+이 프로젝트는 **2024년 12월 14일**부터 **2024년 12월 22일**까지 진행된 서버리스 React Native 프로젝트입니다. (1인 개발 프로젝트)
+
+<br>
+
+## 기술 스택
+### 핵심 기술
+- **React Native**: 크로스 플랫폼 모바일 애플리케이션 프레임워크
+- **TypeScript**: 타입 안전성과 확장성, 유지보수성을 제공하는 코드 작성
+
+### 주요 라이브러리
+- **axios**: OpenAI API와 연동하여 AI 기반 기능을 통합
+- **expo-router**: 애플리케이션 내 간단하고 구조화된 라우팅 구현
+- **expo-image-picker**: 사용자 기기에서 이미지 선택 기능을 제공
+- **styled-components/native**: 모듈화되고 재사용 가능한 테마 기반 컴포넌트 스타일링
+- **react-native-calendars**: 동적이고 커스터마이징 가능한 캘린더 UI 기능 구현
+- **react-native-async-storage**: 소량의 데이터를 영구적으로 저장할 수 있는 로컬 스토리지 제공
+- **expo-linear-gradient**: 시각적으로 향상된 UI 요소를 위한 그라디언트 구성 요소 추가
+<br>
+
+---
+
 # Welcome to your Expo app 👋
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
