@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/native";
-//import CameraUploadButton from "./CameraUploadButton";
+import CameraUploadButton from "./CameraUploadButton";
 import ImageUploadButton from "./ImageUploadButton";
 import Preview from "./Preview";
 
@@ -22,9 +22,6 @@ const UploadSection: React.FC<UploadSectionProps> = ({
       <Text>이미지 업로드(선택)</Text>
       <FlexWrapper>
         <ImageUploadButton setImageUrl={updateImage}>
-          카메라 열기
-        </ImageUploadButton>
-        <ImageUploadButton setImageUrl={updateImage}>
           이미지 파일 추가
         </ImageUploadButton>
       </FlexWrapper>
@@ -42,7 +39,7 @@ const Wrapper = styled.View`
   border-color: #3c7960;
   margin-top: 16px;
   width: 100%;
-  padding: 0 25px;
+  padding: 0 30px;
   margin-bottom: 25px;
 `;
 
@@ -51,7 +48,7 @@ const Text = styled.Text`
   font-size: 12px;
   color: #5c5c5c;
   margin-top: 20px;
-  margin-bottom: 13px;
+  margin-bottom: 3px;
 `;
 
 const FlexWrapper = styled.View`
@@ -59,4 +56,6 @@ const FlexWrapper = styled.View`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  justify-content: center;
+  padding: 20px;
 `;

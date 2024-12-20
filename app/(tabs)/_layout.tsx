@@ -47,7 +47,7 @@ export default function TabLayout() {
           tabBarIcon: ({ color, size }) => (
             <Image
               source={require("../../assets/images/icon_write.png")}
-              style={{ width: size-2, height: size-2, tintColor: color }}
+              style={{ width: size - 2, height: size - 2, tintColor: color }}
               resizeMode="contain"
             />
           ),
@@ -60,7 +60,7 @@ export default function TabLayout() {
           tabBarIcon: ({ color, size }) => (
             <Image
               source={require("../../assets/images/icon_check.png")}
-              style={{ width: size-2, height: size-2, tintColor: color }}
+              style={{ width: size - 2, height: size - 2, tintColor: color }}
               resizeMode="contain"
             />
           ),

@@ -3,7 +3,7 @@ import axios from 'axios';
 // OpenAI API 공통 함수
 export const openAiApi = async (prompt: string, userContent: string) => {
   try {
-    console.log(process.env.EXPO_PUBLIC_API_KEY)
+    //console.log(process.env.EXPO_PUBLIC_API_KEY)
     const response = await axios.post(
       'https://api.openai.com/v1/chat/completions',
       {

@@ -3,7 +3,6 @@ import {
   View,
   Text,
   StyleSheet,
-  Platform,
   Alert,
   ActivityIndicator,
 } from "react-native";
@@ -27,33 +26,17 @@ export default function HomeScreen() {
   const fetchLogDates = async () => {
     try {
       const storedLogs = await AsyncStorage.getItem("logs");
-      console.log("Stored Logs:", storedLogs);
-
       const logDates = storedLogs ? JSON.parse(storedLogs) : [];
-      console.log("Parsed Log Dates:", logDates);
-      const marked: { [date: string]: { customStyles: any } } = {};
+      const marked: { [date: string]: any } = {};
 
       logDates.forEach((dateKey: string) => {
         const formattedDate = `${dateKey.slice(0, 4)}-${dateKey.slice(
           4,
           6,
         )}-${dateKey.slice(6, 8)}`;
-
-        marked[formattedDate] = {
-          customStyles: {
-            container: {
-              backgroundColor: "#A5CBBC",
-              borderRadius: 30,
-            },
-            text: {
-              color: "white",
-              fontWeight: "bold",
-            },
-          },
-        };
+        marked[formattedDate] = true;
       });
 
-      console.log("Marked Dates:", marked);
       setMarkedDates(marked);
     } catch (error) {
       console.error("Error fetching log dates:", error);
@@ -71,8 +54,6 @@ export default function HomeScreen() {
 
     try {
       const selectedLog = await AsyncStorage.getItem(selectedDateKey);
-      console.log("Selected Log:", selectedLog);
-
       if (selectedLog) {
         router.push("/checkLog");
       } else {
@@ -85,7 +66,6 @@ export default function HomeScreen() {
     }
   };
 
-  // 로딩
   if (loading) {
     return (
       <View style={localStyles.loaderContainer}>
@@ -102,29 +82,58 @@ export default function HomeScreen() {
         start={{ x: 0.5, y: 0 }}
         end={{ x: 0.5, y: 1 }}
         style={styles.gradientContainer}
-      ></LinearGradient>
+      />
       <View style={styles.bigMargin}></View>
       <View style={[styles.container, { backgroundColor: "#F2F6F3", flex: 1 }]}>
         <View style={styles.margin} />
         <Text style={styles.logo}>yourlog</Text>
         <Text style={styles.bigText}>{name}님의 성장을 응원합니다.</Text>
         <View style={styles.bigMargin} />
-        {/* <CalendarPicker onDateChange={onDateChange} /> */}
 
-        <Calendar
-          firstDay={1}
-          monthFormat={"yyyy년 MM월"}
-          current={new Date().toISOString().split("T")[0]}
-          maxDate={new Date().toISOString().split("T")[0]}
-          onDayPress={handleDayPress}
-          markingType={"custom"} // custom 스타일 사용
-          markedDates={markedDates} // 로그 날짜 표시
-          theme={{
-            todayTextColor: "#3c7960",
-            arrowColor: "#3c7960",
-            textMonthFontWeight: "bold",
-          }}
-        />
+        <View style={localStyles.calendarWrapper}>
+          <Calendar
+            firstDay={1}
+            monthFormat={"yyyy년 MM월"}
+            current={new Date().toISOString().split("T")[0]}
+            maxDate={new Date().toISOString().split("T")[0]}
+            onDayPress={handleDayPress}
+            markingType={"custom"}
+            theme={{
+              todayTextColor: "#3c7960",
+              arrowColor: "#3c7960",
+              textMonthFontWeight: "bold",
+              textMonthFontSize: 18,
+              monthTextColor: "#3c7960",
+            }}
+            dayComponent={({ date, state }) => {
+              const isMarked = !!markedDates[date.dateString];
+
+              return (
+                <View style={{ alignItems: "center" }}>
+                  <Text
+                    style={{
+                      color: state === "disabled" ? "#d9e1e8" : "#2d4150",
+                      fontWeight: "normal",
+                    }}
+                  >
+                    {date.day}
+                  </Text>
+                  <View
+                    style={{
+                      width: 10,
+                      height: 10,
+                      marginTop: 6,
+                      marginBottom: 3,
+                      borderRadius: 6,
+                      backgroundColor: isMarked ? "#A5CBBC" : "#e0e0e0",
+                    }}
+                  />
+                </View>
+              );
+            }}
+          />
+        </View>
+
         {loading && (
           <ActivityIndicator
             size="large"
@@ -143,8 +152,7 @@ export default function HomeScreen() {
 }
 
 const localStyles = StyleSheet.create({
-  SubImage: { width: 80, height: 100, left: 10, top: 90 },
-  dateText: { fontSize: 20, marginVertical: 10 },
+  SubImage: { width: 80, height: 100, left: 10, top: 45 },
   loaderContainer: {
     flex: 1,
     justifyContent: "center",
@@ -158,5 +166,12 @@ const localStyles = StyleSheet.create({
   },
   loader: {
     marginTop: 20,
+  },
+  calendarWrapper: {
+    borderRadius: 8,
+    overflow: "hidden",
+    backgroundColor: "white",
+    paddingBottom: 12,
+    paddingTop: 5,
   },
 });
