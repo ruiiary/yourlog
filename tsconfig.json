@@ -17,5 +17,5 @@
     "./expo-env.d.ts",
     "@types/env.d.ts",
     "expo-env.d.ts"
-, "components/writeLog/ImageUpload/CameraUploadButton.jsx", "app/(tabs)/index.tsx"  ]
+, "components/writeLog/ImageUpload/CameraUploadButton.jsx", "app/(tabs)/index.tsx", "components/checkLog"  ]
 }

@@ -33,13 +33,9 @@ const UploadSection: React.FC<UploadSectionProps> = ({
 export default UploadSection;
 
 const Wrapper = styled.View`
-  background-color: #f2f6f3;
-  border-radius: 18px;
-  border-width: 0.3px;
-  border-color: #3c7960;
   margin-top: 16px;
   width: 100%;
-  padding: 0 30px;
+  padding: 0 10px;
   margin-bottom: 25px;
 `;
 
@@ -48,7 +44,7 @@ const Text = styled.Text`
   font-size: 12px;
   color: #5c5c5c;
   margin-top: 20px;
-  margin-bottom: 3px;
+  margin-bottom: 0px;
 `;
 
 const FlexWrapper = styled.View`

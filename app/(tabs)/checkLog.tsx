@@ -9,12 +9,12 @@ import {
   Image,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { router } from "expo-router";
 import { styles } from "../Styles";
 import { getLogs } from "../../localStorage/log";
 import Tags from "../../components/common/Tags";
+import ImageView from "../../components/checkLog/ImageView";
 
-// 이미지 맵핑
+// 감정 이모지 맵핑
 const emotionMap: { [key: string]: any } = {
   happy: require("../../assets/images/emotions/happy.png"),
   sad: require("../../assets/images/emotions/sad.png"),
@@ -91,6 +91,7 @@ export default function checkLog() {
               )}
 
               <View style={localStyles.margin} />
+              {item.image && <ImageView imageUrl={item.image} />}
               <Text style={localStyles.dateText}>{item.date}</Text>
               <TouchableOpacity
                 onPress={() => toggleLetterVisibility(index)}
