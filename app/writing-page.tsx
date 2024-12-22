@@ -28,8 +28,6 @@ const WritingPage: React.FC = () => {
   const { text, setText, setHandler } = useLogContext();
   const textRef = useRef<TextInput>(null);
 
-  const [showModal, setShowModal] = useState(false);
-
   const changeHandler = (newText: string) => {
     setText(newText);
 

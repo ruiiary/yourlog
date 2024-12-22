@@ -1,11 +1,16 @@
 import React from "react";
 import styled from "styled-components/native";
 import { useRouter } from "expo-router";
+import { useLogContext } from "@/context/LogContext";
 
 const WritingEntryButton = () => {
   const router = useRouter();
+  const { setDate } = useLogContext();
 
   const handleClick = () => {
+    const currentDate = new Date(); 
+    const formattedDate = currentDate.toISOString().split("T")[0]; // yyyy-MM-dd 형식으로 변환
+    setDate(formattedDate); 
     router.push("/(tabs)/writeLog");
   };
 
