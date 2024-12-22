@@ -18,14 +18,13 @@ export default function TabLayout() {
         tabBarBackground: TabBarBackground,
         tabBarStyle: {
           height: 70,
-          borderTopLeftRadius: 20, // 왼쪽 상단 모서리 둥글게
-          borderTopRightRadius: 20, // 오른쪽 상단 모서리 둥글게
-          position: "absolute", // 탭바를 떠있는 형태로 만듦
-          borderTopWidth: 0, // 상단 경계선 없애기
-          shadowColor: "#fff", // 그림자 색상
-          shadowOpacity: 0.1, // 그림자 투명도
-          shadowRadius: 6, // 그림자 반경
-          elevation: 5, // 안드로이드에서 그림자 효과
+          borderTopLeftRadius: 20,
+          borderTopRightRadius: 20,
+          position: "absolute",
+          shadowColor: "#fff",
+          shadowOpacity: 0.1,
+          shadowRadius: 6,
+          elevation: 5,
           gap: 1,
           paddingTop: 2,
         },
@@ -47,7 +46,7 @@ export default function TabLayout() {
           tabBarIcon: ({ color, size }) => (
             <Image
               source={require("../../assets/images/icon_write.png")}
-              style={{ width: size-2, height: size-2, tintColor: color }}
+              style={{ width: size - 2, height: size - 2, tintColor: color }}
               resizeMode="contain"
             />
           ),
@@ -60,7 +59,7 @@ export default function TabLayout() {
           tabBarIcon: ({ color, size }) => (
             <Image
               source={require("../../assets/images/icon_check.png")}
-              style={{ width: size-2, height: size-2, tintColor: color }}
+              style={{ width: size - 2, height: size - 2, tintColor: color }}
               resizeMode="contain"
             />
           ),

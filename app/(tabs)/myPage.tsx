@@ -12,6 +12,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { LinearGradient } from "expo-linear-gradient";
 import { Picker } from "@react-native-picker/picker";
 import * as ImagePicker from "expo-image-picker";
+import styled from "styled-components/native";
 
 export default function MyPage() {
   const [name, setName] = useState("윤서");
@@ -141,7 +142,15 @@ export default function MyPage() {
             }
             style={styles.profileImage}
           />
+          <ButtonLayout>
+            <ContentWrapper>
+              <ImageStyle
+                source={require("../../assets/images/iconPencil.png")}
+              />
+            </ContentWrapper>
+          </ButtonLayout>
         </TouchableOpacity>
+
         <Text style={styles.userName}>{name}</Text>
 
         {/* 관심 분야 */}
@@ -286,3 +295,36 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 });
+
+const ButtonLayout = styled.View`
+  z-index: 1;
+  position: absolute;
+  bottom: 0px;
+  left: 50px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  shadow-color: #000;
+  shadow-offset: 0px 2px;
+  shadow-opacity: 0.3;
+  shadow-radius: 3px;
+  elevation: 5;
+  border: none;
+`;
+
+const ContentWrapper = styled.TouchableOpacity`
+  display: flex;
+  background-color: #ccc;
+  padding: 10px;
+  border-radius: 30px;
+  align-items: center;
+  justify-content: center;
+  width: 12px;
+  height: 12px;
+`;
+
+const ImageStyle = styled.Image`
+  width: 10px;
+  height: 10px;
+  tint-color: #fff;
+`;
