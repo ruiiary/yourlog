@@ -11,6 +11,7 @@ _2024년 12월 14일 ~ 2024년 12월 22일 / 서버리스 React Native 프로젝
 ## 기술 스택
 - **React Native**
 - **TypeScript**
+- **Expo**
 
 ### 주요 라이브러리
 - **axios**: OpenAI API와 연동하여 AI 기반 기능을 통합
